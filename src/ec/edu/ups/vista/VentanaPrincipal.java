@@ -19,14 +19,11 @@ import javax.swing.JOptionPane;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorDirectorio controladorDirectorio;
-    /**
-     * Creates new form VentanaPrincipal
-     */
     public VentanaPrincipal() {
         initComponents();
         controladorDirectorio = new ControladorDirectorio();
-        this.setTitle("Gestión de Directorios");
-        this.setLocation(new Point(300, 100));
+        this.setTitle("Gestión Directorios");
+        this.setLocation(new Point(400, 150));
     }
     
     public void llenarLista(List<String> directorio) {
@@ -214,18 +211,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Obligatorio llenar el campo de ruta");
             } else {
                 if (controladorDirectorio.comprobarExistencia(ruta, nuevo)) {
-                    int opcion = JOptionPane.showConfirmDialog(this, "La carpeta ya existe, ¿desea reemplazarla?");
+                    int opcion = JOptionPane.showConfirmDialog(this, "Carpeta ya existente, ¿desea reemplazarla?");
                     if (opcion == JOptionPane.YES_OPTION) {
                         controladorDirectorio.crearDirectorio(ruta, nuevo);
-                        JOptionPane.showMessageDialog(this, "Directorio creado correctamente");
+                        JOptionPane.showMessageDialog(this, "Directorio Creado de manera correcta");
                         List<String> directorio = controladorDirectorio.listarArchivos(ruta);
                         llenarLista(directorio);
                     }
 
                 } else {
                     controladorDirectorio.crearDirectorio(ruta, nuevo);
-                    List<String> directorio = controladorDirectorio.listarArchivos(ruta);
-                    llenarLista(directorio);
+                    JOptionPane.showMessageDialog(this, "Directorio Creado de manera correcta");
                 }
             }
         }

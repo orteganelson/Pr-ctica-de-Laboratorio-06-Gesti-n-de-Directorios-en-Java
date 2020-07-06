@@ -164,14 +164,16 @@ public class ControladorDirectorio {
         archivo.mkdir();
     }
 
-    public void renombrarDirectorio(String ruta, String actual, String renombre) {
+    public void renombrarDirectorio(String ruta, String actual, 
+            String renombre) {
         archivo = new File(ruta + File.separator + actual);
 
         File nuevo = new File(ruta + File.separator + renombre);
         archivo.renameTo(nuevo);
     }
 
-    public void eliminarDirectorio(String ruta, String eliminar) throws IOException {
+    public void eliminarDirectorio(String ruta, String eliminar) 
+            throws IOException {
         archivo = new File(ruta + File.separator + eliminar);
         if (archivo.isDirectory()) {
             archivos = archivo.listFiles();
